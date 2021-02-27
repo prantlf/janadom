@@ -1,0 +1,82 @@
+{
+  "name": "janadom",
+  "version": "0.0.1",
+  "description": "A minimal and complete implementation of React JSX creating native DOM elements.",
+  "homepage": "https://github.com/prantlf/janadom#readme",
+  "author": {
+    "name": "Ferdinand Prantl",
+    "email": "prantlf@gmail.com",
+    "url": "http://prantl.tk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prantlf/janadom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/prantlf/janadom/issues"
+  },
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/prantlf/janadom/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "browser": "dist/index.umd.js",
+  "types": "src/index.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "prepare": "npm run build:esm && npm run build:umd && npm run build:min && npm run build:cjs",
+    "build:esm": "esbuild --bundle --sourcemap --format=esm --outfile=dist/index.esm.js src/index.ts",
+    "build:umd": "esbuild --bundle --sourcemap --format=umd --global-name=janadom --outfile=dist/index.umd.js src/index.ts",
+    "build:min": "esbuild --bundle --sourcemap --minify --format=umd --global-name=janadom --outfile=dist/index.umd.min.js src/index.ts",
+    "build:cjs": "esbuild --bundle --sourcemap --format=cjs --outfile=dist/index.js src/index.ts",
+    "build:test": "esbuild --sourcemap --format=cjs --tsconfig=tsconfig.json --outfile=test/compiled.test.js test/compiled.test.tsx",
+    "watch": "nodemon -w src -w test -e js,ts,tsx npm run pretest",
+    "pretest": "npm run build:cjs && npm run build:test",
+    "test": "c8 node test"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/*",
+      "dist/*"
+    ],
+    "check-coverage": true,
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "branches": 100,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
+  },
+  "devDependencies": {
+    "@prantlf/baretest": "^2.0.1",
+    "@prantlf/esbuild": "^0.8.46",
+    "c8": "^7.6.0",
+    "dom-lite": "^20.2.0",
+    "nodemon": "^2.0.7"
+  },
+  "keywords": [
+    "jsx",
+    "tsx",
+    "native",
+    "dom",
+    "jsx-dom",
+    "jsx-native-dom",
+    "node",
+    "browser"
+  ]
+}
