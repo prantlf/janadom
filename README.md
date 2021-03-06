@@ -14,7 +14,7 @@ A minimal and complete implementation of [React JSX] for creating native DOM ele
 * Written in TypeScript.
 * Tests in Node.js feasible using [dom-lite].
 
-If you need just HTML and not SVG, have a look at the [version 0.0.2], which is only half of the package size.
+If you need just HTML and not SVG, have a look at the [versions 0.0.x], which is only half of the package size.
 
 ## Synopsis
 
@@ -364,4 +364,4 @@ Licensed under the MIT license.
 [React JSX]: https://reactjs.org/docs/jsx-in-depth.html
 [dom-lite]: https://github.com/litejs/dom-lite#readme
 [CSS properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
-[version 0.0.1]: https://github.com/prantlf/janadom/tree/v0.0.1#readme
+[versions 0.0.x]: https://github.com/prantlf/janadom/tree/html-only#readme
