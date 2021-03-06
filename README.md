@@ -13,6 +13,8 @@ A minimal and complete implementation of [React JSX] for creating native DOM ele
 * Written in TypeScript.
 * Tests in Node.js feasible using [dom-lite].
 
+If you need to create not only HTML, but also SVG markup, have a look at the [latest version], which supports SVG too and is only twice this package size.
+
 ## Synopsis
 
 ```tsx
@@ -66,8 +68,7 @@ If you write TypeScript and compile with `tsc`, you can configure the JSX proces
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "createEl",
-    "jsxFragmentFactory": "DocumentFragment",
-    ...
+    "jsxFragmentFactory": "DocumentFragment"
   }
 }
 ```
@@ -77,12 +78,30 @@ If you write JavaScript or TypeScript and compile with `esbuild`, you can use ei
     esbuild --jsx-factory=createEl --jsx-fragment=DocumentFragment source.jsx
     esbuild --tsconfig=tsconfig.json source.tsx
 
+If you transpile with `babel`, you can enable the JSX processing by the `@babel/plugin-transform-react-jsx` plugin:
+
+```json
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragma": "createEl",
+        "pragmaFrag": "DocumentFragment"
+      }
+    ]
+  ]
+}
+```
+
 If you use other compiler that supports JSX, find out how to configure factories for an element and a document fragment with the following values:
 
     element factory:           createEl         (named export from `janadom`)
     document fragment factory: DocumentFragment (built-in DOM class name)
 
 For example, if you use `swc`, follow [their documentation](https://swc.rs/docs/configuring-swc/#jsctransform).
+
+If you use bundlers like `rollup`, `webpack` `parcel` or others, they probably use one of the transpilers mentioned above. Follow their documentation about how to pass the JSX configuration to their transpiling plugin.
 
 ## Usage
 
@@ -139,7 +158,7 @@ createEl('div', { id: 'test' },
 createRef(el: null | Element = null): { current: null | Element }
 ```
 
-The `createRef` is used in the (written) source code to create an object, which will host a DOM element pointing to an element created by the JSX code. It is a convenient way how to locate elements in the generated DOM withtou querying for them later. See [element references](#references) for more information.
+The `createRef` is used in the (written) source code to create an object, which will host a DOM element pointing to an element created by the JSX code. It is a convenient way how to locate elements in the generated DOM without querying for them later. See [element references](#references) for more information.
 
 See also the documentation of [React JSX] for a full reference of the JSX syntax.
 
@@ -164,6 +183,8 @@ function FormattedName({ firstName, lastName }) {
   return <span class="name">{firstName} {lastName}</span>
 }
 ```
+
+See also [another example of a factory below](#differences-from-react).
 
 Use an empty tag name to specify a document fragment, if you need to return multiple elements without a single root from a function, which you will append to a parent element later:
 
@@ -267,14 +288,16 @@ let title
 <h2 ref={el => title = el}>...</h2>
 ```
 
-You can use the variable to access the element in an event handler later, for example, without having to search for it using the element's selector. Because grabbing an element is needed so often, you can shorten it by passing a reference object created by `createRef`:
+You can use the variable to access the element in an event handler later, for example, without having to search for it using the element's selector.
+
+Because grabbing an element is needed so often, you can shorten it by passing a reference object created by `createRef`:
 
 ```jsx
 import { createEl, createRef } from 'janadom'
 
 let title = createRef()
 <h2 ref={title}>...</h2>
-// title.current will point to the element instance
+// title.current will point to the H2 element instance
 ```
 
 ### Children
@@ -340,3 +363,4 @@ Licensed under the MIT license.
 [React JSX]: https://reactjs.org/docs/jsx-in-depth.html
 [dom-lite]: https://github.com/litejs/dom-lite#readme
 [CSS properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
+[latest version]: https://github.com/prantlf/janadom#readme

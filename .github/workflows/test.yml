@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - html-only
   pull_request:
     types:
     - opened
