@@ -1,6 +1,6 @@
 {
   "name": "janadom",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A minimal and complete implementation of React JSX creating native DOM elements.",
   "homepage": "https://github.com/prantlf/janadom#readme",
   "author": {
