@@ -28,24 +28,20 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.umd.js",
-  "types": "src/index.ts",
+  "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
-    "prepare": "npm run generate && npm run build:esm && npm run build:umd && npm run build:min && npm run build:cjs",
-    "generate": "node tools/generate-svg-tags",
-    "build:esm": "esbuild --bundle --sourcemap --format=esm --outfile=dist/index.esm.js src/index.ts",
-    "build:umd": "esbuild --bundle --sourcemap --format=umd --global-name=janadom --outfile=dist/index.umd.js src/index.ts",
-    "build:min": "esbuild --bundle --sourcemap --minify --format=umd --global-name=janadom --outfile=dist/index.umd.min.js src/index.ts",
-    "build:cjs": "esbuild --bundle --sourcemap --format=cjs --outfile=dist/index.js src/index.ts",
-    "build:test": "esbuild --sourcemap --format=cjs --tsconfig=tsconfig.json --outfile=test/compiled.test.js test/compiled.test.tsx",
-    "watch": "nodemon -w src -w test -e js,ts,tsx npm run pretest",
-    "pretest": "npm run build:cjs && npm run build:test",
-    "test": "c8 node test"
+    "prepare": "node tools/generate-svg-tags && node tools/build dist && tsc --emitDeclarationOnly --declaration --outDir dist src/index.ts && rm dist/svg-tags.d.ts",
+    "build": "node tools/build dist",
+    "watch": "node tools/build watch",
+    "precheck": "node tools/build check",
+    "check": "node test/coded.test && node test/compiled.test",
+    "pretest": "node tools/build test",
+    "test": "c8 node -r source-map-support/register test"
   },
-  "nyc": {
+  "c8": {
     "extension": [
       ".ts"
     ],
@@ -58,19 +54,25 @@
       "lcov",
       "text-summary"
     ],
-    "branches": 100,
+    "branches": 95,
     "lines": 100,
     "functions": 100,
     "statements": 100
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+    "@babel/plugin-transform-react-jsx": "^7.12.17",
     "@prantlf/baretest": "^2.0.1",
     "@prantlf/esbuild": "^0.8.46",
+    "@types/node": "^14.14.31",
     "c8": "^7.6.0",
     "dom-lite": "^20.2.0",
     "html-tag-names": "^1.1.5",
-    "nodemon": "^2.0.7",
-    "svg-tag-names": "^2.0.1"
+    "source-map-support": "^0.5.19",
+    "svg-tag-names": "^2.0.1",
+    "typescript": "^4.2.3"
   },
   "keywords": [
     "jsx",

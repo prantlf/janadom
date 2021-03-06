@@ -9,6 +9,6 @@
   },
   "search.exclude": {
     "**/dist": true,
-    "test/compiled.test.js*": true
+    "test/compiled.test*.js": true
   }
 }

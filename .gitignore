@@ -1,6 +1,7 @@
 .DS_Store
 coverage
-dist
+dist/*.js*
 node_modules
 npm-debug.log
-test/compiled.test.js*
+test/compiled.test*.js
+*.map

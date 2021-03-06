@@ -12,7 +12,19 @@
       "preLaunchTask": "pretest",
       "outFiles": [
         "${workspaceFolder}/dist/**/*.js",
-        "${workspaceFolder}/test/compiled.test.js"
+        "${workspaceFolder}/test/compiled.test*.js"
+      ],
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "build",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/build.js",
+      "args": [
+        "test"
       ],
       "skipFiles": [
         "<node_internals>/**"

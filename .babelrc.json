@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "throwIfNamespace": false,
+        "pragma": "createEl",
+        "pragmaFrag": "DocumentFragment",
+        "useSpread": true
+      }
+    ],
+    "@babel/plugin-transform-modules-commonjs"
+  ]
+}
