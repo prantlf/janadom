@@ -34,7 +34,8 @@
     "src"
   ],
   "scripts": {
-    "prepare": "npm run build:esm && npm run build:umd && npm run build:min && npm run build:cjs",
+    "prepare": "npm run generate && npm run build:esm && npm run build:umd && npm run build:min && npm run build:cjs",
+    "generate": "node tools/generate-svg-tags",
     "build:esm": "esbuild --bundle --sourcemap --format=esm --outfile=dist/index.esm.js src/index.ts",
     "build:umd": "esbuild --bundle --sourcemap --format=umd --global-name=janadom --outfile=dist/index.umd.js src/index.ts",
     "build:min": "esbuild --bundle --sourcemap --minify --format=umd --global-name=janadom --outfile=dist/index.umd.min.js src/index.ts",
@@ -67,7 +68,9 @@
     "@prantlf/esbuild": "^0.8.46",
     "c8": "^7.6.0",
     "dom-lite": "^20.2.0",
-    "nodemon": "^2.0.7"
+    "html-tag-names": "^1.1.5",
+    "nodemon": "^2.0.7",
+    "svg-tag-names": "^2.0.1"
   },
   "keywords": [
     "jsx",

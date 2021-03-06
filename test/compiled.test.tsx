@@ -16,6 +16,11 @@ test('a dynamic tag name', () => {
   assert.strictEqual(el.outerHTML, '<div></div>')
 })
 
+test('an svg tag name', () => {
+  const el = <svg></svg>
+  assert.strictEqual(el.outerHTML, '<svg></svg>')
+})
+
 test('an element factory', () => {
   function HTMLDivElement() {
     return <div></div>
@@ -53,6 +58,11 @@ test('an attribute with a literal', () => {
 test('an attribute with a string value', () => {
   const el = <div title={ 'test' }></div>
   assert.strictEqual(el.outerHTML, '<div title="test"></div>')
+})
+
+test('a xlink attribute', () => {
+  const el = <use xlink:href="http://localhost"></use>
+  assert.strictEqual(el.outerHTML, '<use xlink:href="http://localhost"></use>')
 })
 
 test('an attribute with a number value', () => {

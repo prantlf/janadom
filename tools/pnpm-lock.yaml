@@ -1,0 +1,16 @@
+dependencies:
+  html-tag-names: 1.1.5
+  svg-tag-names: 2.0.1
+lockfileVersion: 5.2
+packages:
+  /html-tag-names/1.1.5:
+    dev: false
+    resolution:
+      integrity: sha512-aI5tKwNTBzOZApHIynaAwecLBv8TlZTEy/P4Sj2SzzAhBrGuI8yGZ0UIXVPQzOHGS+to2mjb04iy6VWt/8+d8A==
+  /svg-tag-names/2.0.1:
+    dev: false
+    resolution:
+      integrity: sha512-BEZ508oR+X/b5sh7bT0RqDJ7GhTpezjj3P1D4kugrOaPs6HijviWksoQ63PS81vZn0QCjZmVKjHDBniTo+Domg==
+specifiers:
+  html-tag-names: ^1.1.5
+  svg-tag-names: ^2.0.1

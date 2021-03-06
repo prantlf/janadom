@@ -11,6 +11,10 @@ class HTMLTemplateElement extends HTMLElement {
   }
 }
 
+HTMLElement.prototype.setAttributeNS = function (namespace, name, value) {
+  this.setAttribute(name, value) // simplification for tests
+}
+
 global.document = document
 global.Element = HTMLElement
 global.DocumentFragment = DocumentFragment

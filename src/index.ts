@@ -1,3 +1,5 @@
+import svgTags from './svg-tags'
+
 // Either an element (`HTMLElement` or `SVGElement`) with attributes and children,
 // or a `DocumentFragment` with children only, returned from `createEl` either
 // by `document.createElement` or `Factory`.
@@ -49,10 +51,17 @@ export function createRef(el: null | Element = null): Ref {
 // Creates an element, with attributes and children according to the input parameters.
 export function createEl(type: Type, props: Props, ...children: Child[]): Parent {
   let el
-  if (typeof type === 'string') el = document.createElement(type)
-  else if (type === DocumentFragment) el = document.createDocumentFragment()
-  else if (typeof type === 'function') return (type as Factory)(props, ...children)
-  else throw new TypeError(`invalid element type ${type}`)
+  if (typeof type === 'string') {
+    el = svgTags.includes(type)
+      ? document.createElementNS('http://www.w3.org/2000/svg', type)
+      : document.createElement(type)
+  } else if (type === DocumentFragment) {
+    el = document.createDocumentFragment()
+  } else if (typeof type === 'function') {
+    return (type as Factory)(props, ...children)
+  } else {
+    throw new TypeError(`invalid element type ${type}`)
+  }
 
   for (const name in props) {
     const value = props[name]
@@ -79,14 +88,18 @@ export function createEl(type: Type, props: Props, ...children: Child[]): Parent
 }
 
 function setAttr(el: Element, name: string, value: AttrValue): void {
-  if (typeof value === 'string')
-    el.setAttribute(name, value)
-  else if (typeof value === 'number')
+  if (typeof value === 'string') {
+    if (name.startsWith('xlink:'))
+      el.setAttributeNS( 'http://www.w3.org/1999/xlink', name, value)
+    else
+      el.setAttribute(name, value)
+  } else if (typeof value === 'number') {
     el.setAttribute(name, value.toString())
-  else if (typeof value === 'boolean')
+  } else if (typeof value === 'boolean') {
     el.setAttribute(name, '')
-  else
+  } else {
     throw new TypeError(`invalid attribute type ${typeof value} for ${name}`)
+  }
 }
 
 function listenTo(el: Element, name: string, listener: Listener): void {

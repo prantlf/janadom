@@ -7,11 +7,14 @@
 
 A minimal and complete implementation of [React JSX] for creating native DOM elements. Can be used to generate dynamic HTML content on HTML pages, or to render bodies of web components.
 
-* Tiny size - 1.28 kB minifed, 570 B gzipped.
+* Supports both HTML and SVG elements.
+* Tiny size - 2.41 kB minified, 1.08 B gzipped.
 * Consumable as ESM, UMD and CJS modules.
 * Zero dependencies.
 * Written in TypeScript.
 * Tests in Node.js feasible using [dom-lite].
+
+If you need just HTML and not SVG, have a look at the [version 0.0.1], which is only half of the full package size.
 
 ## Synopsis
 
@@ -53,7 +56,7 @@ pnpm i -D janadom
 If you do not want to bundle this package in your build output, you can load it separately on your web page before your script bundle:
 
 ```html
-<script src=https://unpkg.com/janadom@0.0.1/dist/index.umd.min.js></script>
+<script src=https://unpkg.com/janadom@0.1.0/dist/index.umd.min.js></script>
 <script src=build/index.js></script>
 ```
 
@@ -340,3 +343,4 @@ Licensed under the MIT license.
 [React JSX]: https://reactjs.org/docs/jsx-in-depth.html
 [dom-lite]: https://github.com/litejs/dom-lite#readme
 [CSS properties]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
+[version 0.0.1]: https://github.com/prantlf/janadom/tree/v0.0.1#readme

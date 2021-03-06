@@ -3,7 +3,9 @@ devDependencies:
   '@prantlf/esbuild': 0.8.46
   c8: 7.6.0
   dom-lite: 20.2.0
+  html-tag-names: 1.1.5
   nodemon: 2.0.7
+  svg-tag-names: 2.0.1
 lockfileVersion: 5.2
 packages:
   /@bcoe/v8-coverage/0.2.3:
@@ -489,6 +491,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
+  /html-tag-names/1.1.5:
+    dev: true
+    resolution:
+      integrity: sha512-aI5tKwNTBzOZApHIynaAwecLBv8TlZTEy/P4Sj2SzzAhBrGuI8yGZ0UIXVPQzOHGS+to2mjb04iy6VWt/8+d8A==
   /http-cache-semantics/4.1.0:
     dev: true
     resolution:
@@ -1002,6 +1008,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+  /svg-tag-names/2.0.1:
+    dev: true
+    resolution:
+      integrity: sha512-BEZ508oR+X/b5sh7bT0RqDJ7GhTpezjj3P1D4kugrOaPs6HijviWksoQ63PS81vZn0QCjZmVKjHDBniTo+Domg==
   /term-size/2.2.1:
     dev: true
     engines:
@@ -1186,4 +1196,6 @@ specifiers:
   '@prantlf/esbuild': ^0.8.46
   c8: ^7.6.0
   dom-lite: ^20.2.0
+  html-tag-names: ^1.1.5
   nodemon: ^2.0.7
+  svg-tag-names: ^2.0.1

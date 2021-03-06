@@ -8,6 +8,11 @@ test('a tag name', () => {
   assert.strictEqual(el.outerHTML, '<div></div>')
 })
 
+test('an svg tag name', () => {
+  const el = createEl('svg', null)
+  assert.strictEqual(el.outerHTML, '<svg></svg>')
+})
+
 test('an element factory', () => {
   const div = document.createElement('div')
   function HTMLDivElement() {
@@ -32,6 +37,11 @@ test('a template', () => {
 test('an attribute with a string value', () => {
   const el = createEl('div', { title: 'test' })
   assert.strictEqual(el.outerHTML, '<div title="test"></div>')
+})
+
+test('a xlink attribute', () => {
+  const el = createEl('use', { 'xlink:href': 'http://localhost' })
+  assert.strictEqual(el.outerHTML, '<use xlink:href="http://localhost"></use>')
 })
 
 test('an attribute with a number value', () => {
