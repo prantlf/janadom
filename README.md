@@ -8,7 +8,7 @@
 A minimal and complete implementation of [React JSX] for creating native DOM elements. Can be used to generate dynamic HTML content on HTML pages, or to render bodies of web components.
 
 * Supports both HTML and SVG elements.
-* Tiny size - 2.41 kB minified, 1.08 B gzipped.
+* Tiny size - 2.41 kB minified, 1.08 kB gzipped.
 * Consumable as ESM, UMD and CJS modules.
 * Zero dependencies.
 * Written in TypeScript.
