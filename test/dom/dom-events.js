@@ -1,4 +1,4 @@
-const { document, HTMLElement } = require('dom-lite')
+const { document, Document, HTMLElement } = require('dom-lite')
 const { performance } = require('perf_hooks')
 
 let now
@@ -34,7 +34,7 @@ class Event {
   defaultPrevented = false
   cancelBubble = false
   cancelImmediate = false
-  eventPhase = 0
+  eventPhase = Event.NONE
   timeStamp = now()
 
   constructor(type, options) {
@@ -62,13 +62,12 @@ class Event {
       if (shadowRoot) {
         // if the event is not composed and an ancestor of the target element
         // has a shadow dom, cut the path to start with the custom element
-        if (!this.composed && shadowRoot.mode === 'closed') path = [el]
+        if (!this.composed || shadowRoot.mode === "closed") path = [el]
         else path.push(shadowRoot, el)
       } else {
         path.push(el)
       }
     }
-    path.push(document.body, document.documentElement, document)
     return path
   }
 }
@@ -92,7 +91,7 @@ function callEventHandlers(el, event, capture) {
 function normalizeEvent(type, useCapture) {
   type = type.toLowerCase()
   useCapture = useCapture || false
-  return { type, useCapture  }
+  return { type, useCapture }
 }
 
 // gets an array of event listeners for the specified event type
@@ -147,6 +146,6 @@ const EventTarget = {
 }
 
 Object.assign(HTMLElement.prototype, EventTarget)
-Object.assign(document, EventTarget)
+Object.assign(Document.prototype, EventTarget)
 
-module.exports = { Event }
+module.exports = { Event, CustomEvent: Event }
