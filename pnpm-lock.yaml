@@ -5,7 +5,7 @@ devDependencies:
   '@babel/plugin-transform-react-jsx': 7.12.17_@babel+core@7.13.8
   '@prantlf/baretest': 2.0.1
   '@prantlf/esbuild': 0.8.46
-  '@types/node': 14.14.31
+  '@types/node': 14.14.32
   c8: 7.6.0
   dom-lite: 20.2.0
   html-tag-names: 1.1.5
@@ -308,10 +308,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-sz7iLqvVUg1gIedBOvlkxPlc8/uVzyS5OwGz1cKjXzkl3FpL3al0crU8YGU1WoHkxn0Wxbw5tyi6hvzJKNzFsw==
-  /@types/node/14.14.31:
+  /@types/node/14.14.32:
     dev: true
     resolution:
-      integrity: sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
+      integrity: sha512-/Ctrftx/zp4m8JOujM5ZhwzlWLx22nbQJiVqz8/zE15gOeEW+uly3FSX4fGFpcfEvFzXcMCJwq9lGVWgyARXhg==
   /ansi-regex/5.0.0:
     dev: true
     engines:
@@ -2031,7 +2031,7 @@ specifiers:
   '@babel/plugin-transform-react-jsx': ^7.12.17
   '@prantlf/baretest': ^2.0.1
   '@prantlf/esbuild': ^0.8.46
-  '@types/node': ^14.14.31
+  '@types/node': ^14.14.32
   c8: ^7.6.0
   dom-lite: ^20.2.0
   html-tag-names: ^1.1.5
